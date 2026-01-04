@@ -1,0 +1,25 @@
+{% extends "form_base.html" %}
+
+{% block title %} Add User {% endblock title %}
+
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div style="color:#575757; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;">New User</div>
+
+<br>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-text">User Details</div>
+    <div class="panel-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form| crispy }}
+            <input class="btn btn-success" type="submit" value="Register">
+        </form>
+    </div>
+</div>
+{% endblock %}

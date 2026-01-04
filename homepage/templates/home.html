@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block content %}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2 style="color:#464646; font-style: bold; border-bottom: 1px solid #464646;">
+            Welcome, {{ request.user.username }}
+        </h2>
+    </div>
+    <div class="col-md-4 text-right">
+        <form method="get" class="form-inline justify-content-end">
+            <label class="mr-2">Period:</label>
+            <select name="days" class="form-control form-control-sm" onchange="this.form.submit()">
+                <option value="7" {% if days == 7 %}selected{% endif %}>Last 7 days</option>
+                <option value="30" {% if days == 30 %}selected{% endif %}>Last 30 days</option>
+                <option value="90" {% if days == 90 %}selected{% endif %}>Last 90 days</option>
+            </select>
+        </form>
+    </div>
+</div>
+
+{% if request.user.is_staff %}
+
+<!-- KPI Cards -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-primary h-100">
+            <div class="card-body">
+                <h5 class="card-title">Total Inventory Value</h5>
+                <h2 class="mb-0">${{ total_stock_value|floatformat:2 }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-success h-100">
+            <div class="card-body">
+                <h5 class="card-title">Total Sales ({{ days }}d)</h5>
+                <h2 class="mb-0">${{ total_sales|floatformat:2 }}</h2>
+                {% if sales_change != 0 %}
+                <small>
+                    <i class="fas fa-arrow-{% if sales_change > 0 %}up{% else %}down{% endif %}"></i>
+                    {{ sales_change|floatformat:1 }}%
+                </small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-info h-100">
+            <div class="card-body">
+                <h5 class="card-title">Total Purchases ({{ days }}d)</h5>
+                <h2 class="mb-0">${{ total_purchases|floatformat:2 }}</h2>
+                {% if purchases_change != 0 %}
+                <small>
+                    <i class="fas fa-arrow-{% if purchases_change > 0 %}up{% else %}down{% endif %}"></i>
+                    {{ purchases_change|floatformat:1 }}%
+                </small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white {% if profit >= 0 %}bg-success{% else %}bg-danger{% endif %} h-100">
+            <div class="card-body">
+                <h5 class="card-title">Net Profit ({{ days }}d)</h5>
+                <h2 class="mb-0">${{ profit|floatformat:2 }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Alert Cards -->
+<div class="row mb-4">
+    {% if low_stock_count > 0 %}
+    <div class="col-md-6 mb-3">
+        <div class="card border-warning">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Low Stock Alert ({{ low_stock_count }})</h5>
+            </div>
+            <div class="card-body">
+                {% if low_stock_items %}
+                <ul class="list-group list-group-flush mb-3">
+                    {% for item in low_stock_items %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong class="text-dark">{{ item.name }}</strong>
+                            <br>
+                            <small class="text-muted">Only <span class="badge badge-warning">{{ item.quantity }}</span> units remaining</small>
+                        </div>
+                        <a href="{% url 'inventory' %}?low_stock=true" class="btn btn-sm btn-warning">View</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% if low_stock_count > low_stock_items|length %}
+                <div class="alert alert-warning mb-0">
+                    <small>Showing {{ low_stock_items|length }} of {{ low_stock_count }} low stock items</small>
+                </div>
+                {% endif %}
+                <a href="{% url 'inventory' %}?low_stock=true" class="btn btn-warning btn-sm mt-2 btn-block">View All Low Stock Items</a>
+                {% else %}
+                <p class="text-muted text-center mb-0">No low stock items found.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if out_of_stock_count > 0 %}
+    <div class="col-md-6 mb-3">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0"><i class="fas fa-times-circle"></i> Out of Stock ({{ out_of_stock_count }})</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-danger">Some items are completely out of stock and need immediate attention.</p>
+                <a href="{% url 'inventory' %}?out_of_stock=true" class="btn btn-danger btn-sm">View Out of Stock Items</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Charts Row -->
+<div class="row mb-4">
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Top 10 Stock Levels</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="bar-graph" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Sales vs Purchases Trend (Last 7 Days)</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="line-graph" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Additional Charts Row -->
+<div class="row mb-4">
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Top 5 High Value Items</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="pie-graph" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">Top 5 Selling Items (Last {{ days }} Days)</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity Sold</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in top_selling %}
+                        <tr>
+                            <td><strong>{{ item.stock__name }}</strong></td>
+                            <td><span class="badge badge-primary">{{ item.total_sold }}</span></td>
+                            <td>${{ item.revenue|floatformat:2 }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="3" class="text-center text-muted">No sales data available</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Transaction Statistics -->
+<div class="row mb-4">
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">Transaction Statistics</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6">
+                        <h3 class="text-success">{{ sales_count }}</h3>
+                        <p class="text-muted mb-0">Sales</p>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-info">{{ purchases_count }}</h3>
+                        <p class="text-muted mb-0">Purchases</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <a href="{% url 'new-sale' %}" class="btn btn-success btn-block btn-sm">New Sale</a>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <a href="{% url 'select-supplier' %}" class="btn btn-primary btn-block btn-sm">New Purchase</a>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <a href="{% url 'inventory' %}" class="btn btn-info btn-block btn-sm">View Inventory</a>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <a href="{% url 'stock-report' %}" class="btn btn-secondary btn-block btn-sm">Stock Report</a>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <a href="{% url 'transaction-report' %}" class="btn btn-warning btn-block btn-sm">Transaction Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<!-- Recent Transactions -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Recent Sales</h5>
+            </div>
+            <div class="card-body">
+                {% for item in sales %}
+                    <div class="border-bottom pb-2 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong>Bill #{{ item.billno }}</strong><br>
+                                <small class="text-muted">{{ item.name }} • {{ item.time|date:"M d, Y" }}</small>
+                            </div>
+                            <div class="text-right">
+                                <strong class="text-success">${{ item.get_total_price|floatformat:2 }}</strong><br>
+                                <a href="{% url 'sale-bill' item.billno %}" class="btn btn-sm btn-outline-primary">View</a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="text-muted text-center">No recent sales</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Recent Purchases</h5>
+            </div>
+            <div class="card-body">
+                {% for item in purchases %}
+                    <div class="border-bottom pb-2 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong>Bill #{{ item.billno }}</strong><br>
+                                <small class="text-muted">{{ item.supplier.name }} • {{ item.time|date:"M d, Y" }}</small>
+                            </div>
+                            <div class="text-right">
+                                <strong class="text-primary">${{ item.get_total_price|floatformat:2 }}</strong><br>
+                                <a href="{% url 'purchase-bill' item.billno %}" class="btn btn-sm btn-outline-primary">View</a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="text-muted text-center">No recent purchases</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/Chart.min.js' %}"></script>
+<script>
+    Chart.defaults.global.defaultFontColor = '#3c3c3c';
+    
+    // Bar Chart - Top 10 Stock Levels
+    var barCtx = document.getElementById('bar-graph');
+    if (barCtx) {
+        new Chart(barCtx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: {{ labels|safe }},
+                datasets: [{
+                    label: 'Stock Quantity',
+                    data: {{ data|safe }},
+                    backgroundColor: '#287094',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: { beginAtZero: true }
+                    }]
+                }
+            }
+        });
+    }
+    
+    // Line Chart - Sales vs Purchases Trend
+    var lineCtx = document.getElementById('line-graph');
+    if (lineCtx) {
+        new Chart(lineCtx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: {{ sales_labels|safe }},
+                datasets: [{
+                    label: 'Sales ($)',
+                    data: {{ sales_trend|safe }},
+                    borderColor: '#28a745',
+                    backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Purchases ($)',
+                    data: {{ purchase_trend|safe }},
+                    borderColor: '#17a2b8',
+                    backgroundColor: 'rgba(23, 162, 184, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: { beginAtZero: true }
+                    }]
+                }
+            }
+        });
+    }
+    
+    // Pie Chart - Top 5 High Value Items
+    var pieCtx = document.getElementById('pie-graph');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'pie',
+            data: {
+                labels: {{ stock_value_labels|safe }},
+                datasets: [{
+                    data: {{ stock_value_data|safe }},
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#4BC0C0',
+                        '#9966FF'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        });
+    }
+</script>
+
+{% endblock content %}
+
+{% if request.user.is_staff %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script>
+    // Enable auto-refresh for dashboard
+    var enableAutoRefresh = true;
+</script>
+{% endif %}
