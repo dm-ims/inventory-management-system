@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %} Inventory List {% endblock title %}
+
+{% block content %}
+
+    <div class="row" style="color: #4e4e4e; font-style: bold; font-size: 3rem; ">
+        <div class="col-md-8">Inventory List</div>
+        {% if request.user.is_superuser %}
+        <div class="col-md-4">
+            <div class="d-flex justify-content-end flex-wrap">
+                <a class="btn btn-success mr-2" href="{% url 'new-stock' %}">Add New Stock</a>
+                <a href="{% url 'stock-import' %}" class="btn btn-warning mr-2">Import CSV</a>
+                <a href="{% url 'export-stock' %}" class="btn btn-info">Export All</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div style="border-bottom: 1px solid white;"></div>
+
+    <br>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-filter"></i> Filter Inventory</h5>
+        </div>
+        <div class="card-body">
+            <form method="get">
+                <div class="row">
+                    <!-- Name Search -->
+                    <div class="col-12 col-md-12 col-lg-6 mb-3">
+                        <label for="{{ filter.form.name.id_for_label }}" class="font-weight-bold">
+                            <i class="fas fa-search"></i> Item Name
+                        </label>
+                        {% render_field filter.form.name class="form-control mt-1" placeholder="Search by item name..." %}
+                    </div>
+
+                    <!-- Quantity Range -->
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <label class="font-weight-bold d-block">
+                            <i class="fas fa-boxes"></i> Quantity Range
+                        </label>
+                        <div class="d-flex align-items-center mt-1">
+                            {% render_field filter.form.quantity_min class="form-control" placeholder="Min" style="flex: 1;" %}
+                            <span class="mx-2 text-muted font-weight-bold">-</span>
+                            {% render_field filter.form.quantity_max class="form-control" placeholder="Max" style="flex: 1;" %}
+                        </div>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <label class="font-weight-bold d-block">
+                            <i class="fas fa-dollar-sign"></i> Price Range
+                        </label>
+                        <div class="d-flex align-items-center mt-1">
+                            {% render_field filter.form.price_min class="form-control" placeholder="Min" style="flex: 1;" %}
+                            <span class="mx-2 text-muted font-weight-bold">-</span>
+                            {% render_field filter.form.price_max class="form-control" placeholder="Max" style="flex: 1;" %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Status Checkboxes -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="font-weight-bold d-block mb-2">
+                            <i class="fas fa-exclamation-triangle"></i> Stock Status
+                        </label>
+                        <div class="form-check form-check-inline ml-3">
+                            {% render_field filter.form.low_stock class="form-check-input" %}
+                            <label class="form-check-label" for="{{ filter.form.low_stock.id_for_label }}">
+                                Low Stock
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-3">
+                            {% render_field filter.form.out_of_stock class="form-check-input" %}
+                            <label class="form-check-label" for="{{ filter.form.out_of_stock.id_for_label }}">
+                                Out of Stock
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="row">
+                    <div class="col-12">
+                        <hr class="my-3">
+                        <div class="d-flex flex-wrap justify-content-end">
+                            <button type="submit" class="btn btn-primary px-4 mr-2 mb-2">
+                                <i class="fas fa-filter"></i> Apply Filters
+                            </button>
+                            <a href="{% url 'inventory' %}" class="btn btn-outline-secondary px-4 mb-2">
+                                <i class="fas fa-times"></i> Clear All
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if request.user.is_superuser %}
+    <div class="mb-3">
+        <form method="post" action="{% url 'bulk-stock-action' %}" id="bulk-form">
+            {% csrf_token %}
+            <div class="form-inline">
+                <select name="action" class="form-control mr-2" required>
+                    <option value="">-- Select Action --</option>
+                    <option value="delete">Delete Selected</option>
+                    <option value="export">Export Selected</option>
+                </select>
+                <button type="submit" class="btn btn-warning" id="bulk-submit">Apply to Selected</button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+
+    <table class="table table-css table-bordered table-hover">
+        <thead class="thead-dark align-middle">
+            <tr>
+                {% if request.user.is_superuser %}
+                <th width="5%">
+                    <input type="checkbox" id="select-all">
+                </th>
+                {% endif %}
+                <th width="35%">Item Name</th>
+                <th>Current Stock Level</th>
+                <th>Unit Price</th>
+                {% if request.user.is_superuser %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+
+        {% if object_list %}
+        <tbody>
+            {% for stock in object_list %}
+                <tr>
+                    {% if request.user.is_superuser %}
+                    <td class="align-middle">
+                        <input type="checkbox" name="stock_ids" value="{{ stock.pk }}" class="stock-checkbox">
+                    </td>
+                    {% endif %}
+                    <td>
+                        <p>{{ stock.name }}</p>
+                    </td>
+                    {% if stock.quantity <= 10 %}
+                        <td class="align-middle" style="background-color: red; color: white"><b>{{ stock.quantity }}</b></td>
+                    {% else %}
+                        <td class="align-middle">{{ stock.quantity }}</td>
+                    {% endif %}
+
+                    <td class="align-middle">
+                        <p>{{ stock.unit_price }}</p>
+                    </td>
+
+                    {% if request.user.is_superuser %}
+                    <td class="align-middle">
+                        <a href="{% url 'edit-stock' stock.pk %}" class="btn btn-info btn-sm">Edit Details</a>
+                        <a href="{% url 'stock-adjust' stock.pk %}" class="btn btn-warning btn-sm">Adjust Stock</a>
+                        <a href="{% url 'stock-history' stock.pk %}" class="btn btn-secondary btn-sm">History</a>
+                        <a href="{% url 'delete-stock' stock.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="align-middle">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    {% else %}
+
+    <br><br><br><br><br><br><br><br>
+    <div style="color: #575757; font-style: bold; font-size: 1.5rem; text-align: center;">Empty inventory. Please try adding items</div>
+
+{% endif %}
+
+{% if request.user.is_superuser %}
+<script>
+    // Select all checkbox functionality
+    document.getElementById('select-all').addEventListener('change', function() {
+        var checkboxes = document.querySelectorAll('.stock-checkbox');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = this.checked;
+        }, this);
+    });
+
+    // Bulk form submission
+    document.getElementById('bulk-form').addEventListener('submit', function(e) {
+        var checked = document.querySelectorAll('.stock-checkbox:checked');
+        if (checked.length === 0) {
+            e.preventDefault();
+            alert('Please select at least one item.');
+            return false;
+        }
+        if (document.querySelector('select[name="action"]').value === 'delete') {
+            if (!confirm('Are you sure you want to delete ' + checked.length + ' item(s)?')) {
+                e.preventDefault();
+                return false;
+            }
+        }
+    });
+</script>
+{% endif %}
+
+{% endblock content %}

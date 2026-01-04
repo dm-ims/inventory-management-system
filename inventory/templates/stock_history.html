@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %} Stock History - {{ stock.name }} {% endblock title %}
+
+{% block content %}
+
+<div class="row" style="color: #4e4e4e; font-style: bold; font-size: 3rem;">
+    <div class="col-md-8">Stock History - {{ stock.name }}</div>
+    <div class="col-md-4">
+        <div style="float:right;">
+            <a class="btn btn-primary" href="{% url 'inventory' %}">Back to Inventory</a>
+        </div>
+    </div>
+</div>
+
+<div style="border-bottom: 1px solid white;"></div>
+<br>
+
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <h5>Current Stock Information</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Name:</strong> {{ stock.name }}
+            </div>
+            <div class="col-md-3">
+                <strong>Current Quantity:</strong> {{ stock.quantity }}
+            </div>
+            <div class="col-md-3">
+                <strong>Unit Price:</strong> ${{ stock.unit_price }}
+            </div>
+            <div class="col-md-3">
+                <strong>Last Modified:</strong> {{ stock.last_modified|date:"M d, Y H:i" }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<table class="table table-css table-bordered table-hover">
+    <thead class="thead-dark align-middle">
+        <tr>
+            <th width="15%">Date & Time</th>
+            <th width="10%">Change Type</th>
+            <th width="15%">Previous Value</th>
+            <th width="15%">New Value</th>
+            <th width="10%">Change</th>
+            <th width="15%">Changed By</th>
+            <th width="20%">Reason</th>
+        </tr>
+    </thead>
+
+    {% if history %}
+    <tbody>
+        {% for entry in history %}
+        <tr>
+            <td class="align-middle">{{ entry.changed_at|date:"M d, Y H:i" }}</td>
+            <td class="align-middle">
+                <span class="badge 
+                    {% if entry.change_type == 'purchase' %}badge-success
+                    {% elif entry.change_type == 'sale' %}badge-danger
+                    {% elif entry.change_type == 'adjustment' %}badge-warning
+                    {% elif entry.change_type == 'delete' %}badge-dark
+                    {% else %}badge-info{% endif %}">
+                    {{ entry.get_change_type_display }}
+                </span>
+            </td>
+            <td class="align-middle">
+                {% if entry.previous_name %}
+                    <strong>Name:</strong> {{ entry.previous_name }}<br>
+                {% endif %}
+                {% if entry.previous_price %}
+                    <strong>Price:</strong> ${{ entry.previous_price }}<br>
+                {% endif %}
+                {% if entry.previous_quantity is not None %}
+                    <strong>Quantity:</strong> {{ entry.previous_quantity }}
+                {% endif %}
+                {% if not entry.previous_name and not entry.previous_price and entry.previous_quantity is None %}
+                    -
+                {% endif %}
+            </td>
+            <td class="align-middle">
+                {% if entry.new_name %}
+                    <strong>Name:</strong> {{ entry.new_name }}<br>
+                {% endif %}
+                {% if entry.new_price %}
+                    <strong>Price:</strong> ${{ entry.new_price }}<br>
+                {% endif %}
+                {% if entry.new_quantity is not None %}
+                    <strong>Quantity:</strong> {{ entry.new_quantity }}
+                {% endif %}
+                {% if not entry.new_name and not entry.new_price and entry.new_quantity is None %}
+                    -
+                {% endif %}
+            </td>
+            <td class="align-middle">
+                {% if entry.previous_quantity is not None and entry.new_quantity is not None %}
+                    {% if entry.new_quantity > entry.previous_quantity %}
+                        <span class="text-success">+{{ entry.new_quantity|add:"-"|add:entry.previous_quantity }}</span>
+                    {% elif entry.new_quantity < entry.previous_quantity %}
+                        <span class="text-danger">{{ entry.new_quantity|add:"-"|add:entry.previous_quantity }}</span>
+                    {% else %}
+                        <span class="text-muted">0</span>
+                    {% endif %}
+                {% elif entry.previous_price and entry.new_price %}
+                    {% if entry.new_price > entry.previous_price %}
+                        <span class="text-success">Price ↑</span>
+                    {% elif entry.new_price < entry.previous_price %}
+                        <span class="text-danger">Price ↓</span>
+                    {% else %}
+                        <span class="text-muted">No change</span>
+                    {% endif %}
+                {% elif entry.previous_name or entry.new_name %}
+                    <span class="text-info">Name Changed</span>
+                {% else %}
+                    <span class="text-muted">-</span>
+                {% endif %}
+            </td>
+            <td class="align-middle">{{ entry.changed_by }}</td>
+            <td class="align-middle">{{ entry.reason|default:"-" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% else %}
+    <tbody>
+        <tr>
+            <td colspan="7" class="text-center">No history available for this stock item.</td>
+        </tr>
+    </tbody>
+    {% endif %}
+</table>
+
+{% endblock content %}
+

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %} Stock Adjustment - {{ stock.name }} {% endblock title %}
+
+{% block content %}
+
+<div class="row" style="color: #4e4e4e; font-style: bold; font-size: 3rem;">
+    <div class="col-md-8">Stock Adjustment: {{ stock.name }}</div>
+    <div class="col-md-4">
+        <div style="float:right;">
+            <a class="btn btn-primary" href="{% url 'inventory' %}">Back to Inventory</a>
+        </div>
+    </div>
+</div>
+
+<div style="border-bottom: 1px solid white;"></div>
+<br>
+
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <h5>Current Stock Information</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Name:</strong> {{ stock.name }}
+            </div>
+            <div class="col-md-3">
+                <strong>Current Quantity:</strong> <span class="badge badge-primary">{{ stock.quantity }}</span>
+            </div>
+            <div class="col-md-3">
+                <strong>Unit Price:</strong> ${{ stock.unit_price }}
+            </div>
+            <div class="col-md-3">
+                <strong>Last Modified:</strong> {{ stock.last_modified|date:"M d, Y H:i" }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <h5>Adjust Stock Quantity</h5>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.adjustment_type.id_for_label }}">Adjustment Type *</label>
+                {% render_field form.adjustment_type class="form-control" %}
+                {% if form.adjustment_type.errors %}
+                    <div class="text-danger">{{ form.adjustment_type.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.adjusted_quantity.id_for_label }}">New Quantity *</label>
+                {% render_field form.adjusted_quantity class="form-control" %}
+                {% if form.adjusted_quantity.errors %}
+                    <div class="text-danger">{{ form.adjusted_quantity.errors }}</div>
+                {% endif %}
+                <small class="form-text text-muted">Enter the new total quantity for this stock item.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.reason.id_for_label }}">Reason *</label>
+                {% render_field form.reason class="form-control" %}
+                {% if form.reason.errors %}
+                    <div class="text-danger">{{ form.reason.errors }}</div>
+                {% endif %}
+                <small class="form-text text-muted">Please provide a reason for this adjustment.</small>
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>Note:</strong> This adjustment will be logged in the stock history.
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Apply Adjustment</button>
+            <a href="{% url 'inventory' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+

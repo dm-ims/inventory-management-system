@@ -1,0 +1,709 @@
+INFO 2025-12-27 16:32:05,628 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:32:11,662 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\models.py changed, reloading.
+INFO 2025-12-27 16:32:13,659 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:33:05,242 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\apps.py changed, reloading.
+INFO 2025-12-27 16:33:06,722 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:33:54,969 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\models.py changed, reloading.
+INFO 2025-12-27 16:33:56,517 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:34:31,786 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\urls.py changed, reloading.
+INFO 2025-12-27 16:34:33,403 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:35:04,351 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 16:35:05,970 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:35:15,304 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\models.py changed, reloading.
+INFO 2025-12-27 16:35:18,071 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:35:22,472 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\forms.py changed, reloading.
+INFO 2025-12-27 16:35:24,994 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:35:35,697 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 16:35:38,238 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:35:40,630 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\urls.py changed, reloading.
+INFO 2025-12-27 16:35:43,135 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:36:18,964 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 16:36:19,999 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:36:31,687 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\filters.py changed, reloading.
+INFO 2025-12-27 16:36:32,424 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:38:35,246 autoreload django.utils.autoreload Watching for file changes with StatReloader
+ERROR 2025-12-27 16:38:41,957 basehttp django.server "GET /transactions/sales/ HTTP/1.1" 500 170371
+ERROR 2025-12-27 16:38:54,959 views homepage.views Error loading home view: Cannot find 'saleitem_set' on SaleBill object, 'saleitem_set__stock' is an invalid parameter to prefetch_related()
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\homepage\views.py", line 39, in get
+    return render(request, self.template_name, context)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\defaulttags.py", line 198, in render
+    len_values = len(values)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 1930, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 1320, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 2356, in prefetch_related_objects
+    raise AttributeError(
+    ...<7 lines>...
+    )
+AttributeError: Cannot find 'saleitem_set' on SaleBill object, 'saleitem_set__stock' is an invalid parameter to prefetch_related()
+INFO 2025-12-27 16:38:55,013 basehttp django.server "GET / HTTP/1.1" 200 8087
+INFO 2025-12-27 16:38:55,193 basehttp django.server "GET /static/bootstrap/bootstrap.min.css HTTP/1.1" 200 159515
+INFO 2025-12-27 16:38:55,194 basehttp django.server "GET /static/bootstrap/popper.min.js HTTP/1.1" 200 21004
+INFO 2025-12-27 16:38:55,196 basehttp django.server "GET /static/css/sidebar.css HTTP/1.1" 200 2018
+INFO 2025-12-27 16:38:55,198 basehttp django.server "GET /static/css/main.css HTTP/1.1" 200 8150
+INFO 2025-12-27 16:38:55,198 basehttp django.server "GET /static/bootstrap/bootstrap.min.js HTTP/1.1" 200 58072
+INFO 2025-12-27 16:38:55,200 basehttp django.server "GET /static/css/dialogbox.css HTTP/1.1" 200 763
+INFO 2025-12-27 16:38:55,206 basehttp django.server "GET /static/bootstrap/jquery-3.3.1.slim.min.js HTTP/1.1" 200 69917
+INFO 2025-12-27 16:38:55,207 basehttp django.server "GET /static/js/Chart.min.js HTTP/1.1" 200 172812
+INFO 2025-12-27 16:38:59,691 basehttp django.server "GET /inventory/ HTTP/1.1" 200 15183
+ERROR 2025-12-27 16:39:21,556 views homepage.views Error loading home view: Cannot find 'saleitem_set' on SaleBill object, 'saleitem_set__stock' is an invalid parameter to prefetch_related()
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\homepage\views.py", line 39, in get
+    return render(request, self.template_name, context)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\defaulttags.py", line 198, in render
+    len_values = len(values)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 1930, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 1320, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\query.py", line 2356, in prefetch_related_objects
+    raise AttributeError(
+    ...<7 lines>...
+    )
+AttributeError: Cannot find 'saleitem_set' on SaleBill object, 'saleitem_set__stock' is an invalid parameter to prefetch_related()
+INFO 2025-12-27 16:39:21,559 basehttp django.server "GET / HTTP/1.1" 200 8087
+ERROR 2025-12-27 16:39:27,840 basehttp django.server "GET /transactions/sales/ HTTP/1.1" 500 170214
+INFO 2025-12-27 16:39:34,880 basehttp django.server "GET /inventory/ HTTP/1.1" 200 15183
+INFO 2025-12-27 16:40:01,326 basehttp django.server "GET /inventory/stock/5/history HTTP/1.1" 200 7263
+INFO 2025-12-27 16:40:17,974 basehttp django.server "GET /inventory/ HTTP/1.1" 200 15183
+ERROR 2025-12-27 16:40:42,921 basehttp django.server "GET /transactions/sales/ HTTP/1.1" 500 169716
+INFO 2025-12-27 16:42:30,171 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\models.py changed, reloading.
+INFO 2025-12-27 16:42:31,117 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:42:37,822 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\models.py changed, reloading.
+INFO 2025-12-27 16:42:38,748 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:42:47,547 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\models.py changed, reloading.
+INFO 2025-12-27 16:42:48,237 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 16:42:57,844 basehttp django.server "GET /transactions/sales/ HTTP/1.1" 200 9187
+INFO 2025-12-27 16:42:58,034 basehttp django.server "GET /static/css/dialogbox.css HTTP/1.1" 200 763
+INFO 2025-12-27 16:42:58,038 basehttp django.server "GET /static/bootstrap/bootstrap.min.js HTTP/1.1" 200 58072
+INFO 2025-12-27 16:42:58,041 basehttp django.server "GET /static/bootstrap/jquery-3.3.1.slim.min.js HTTP/1.1" 200 69917
+INFO 2025-12-27 16:42:58,041 basehttp django.server "GET /static/css/main.css HTTP/1.1" 200 8150
+INFO 2025-12-27 16:42:58,043 basehttp django.server "GET /static/css/sidebar.css HTTP/1.1" 200 2018
+INFO 2025-12-27 16:42:58,043 basehttp django.server "GET /static/bootstrap/popper.min.js HTTP/1.1" 200 21004
+INFO 2025-12-27 16:42:58,045 basehttp django.server "GET /static/bootstrap/bootstrap.min.css HTTP/1.1" 200 159515
+INFO 2025-12-27 16:43:46,984 basehttp django.server "GET /transactions/purchases/ HTTP/1.1" 200 9883
+INFO 2025-12-27 16:44:03,368 basehttp django.server "GET /transactions/sales/ HTTP/1.1" 200 9187
+INFO 2025-12-27 16:44:10,879 basehttp django.server "GET /inventory/ HTTP/1.1" 200 15183
+INFO 2025-12-27 16:48:34,670 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 16:49:01,302 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 17:11:02,500 basehttp django.server "GET /transactions/purchases/ HTTP/1.1" 200 9883
+INFO 2025-12-27 17:25:46,412 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7084
+INFO 2025-12-27 17:25:53,412 basehttp django.server "GET /transactions/suppliers/1/edit HTTP/1.1" 200 4670
+INFO 2025-12-27 17:26:03,039 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7084
+INFO 2025-12-27 17:26:09,122 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4565
+INFO 2025-12-27 17:26:15,155 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7084
+INFO 2025-12-27 17:30:07,524 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4565
+INFO 2025-12-27 17:30:12,344 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7084
+INFO 2025-12-27 17:30:15,816 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4565
+INFO 2025-12-27 17:31:01,306 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\forms.py changed, reloading.
+INFO 2025-12-27 17:31:07,052 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 17:31:32,978 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4565
+INFO 2025-12-27 17:31:43,429 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\forms.py changed, reloading.
+INFO 2025-12-27 17:31:45,305 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 17:31:48,871 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4565
+WARNING 2025-12-27 17:31:53,721 basehttp django.server "GET /static/bootstrap/bootstrap.min.js.map HTTP/1.1" 404 1849
+WARNING 2025-12-27 17:31:53,724 basehttp django.server "GET /static/bootstrap/popper.min.js.map HTTP/1.1" 404 1840
+WARNING 2025-12-27 17:31:53,724 basehttp django.server "GET /static/bootstrap/bootstrap.min.css.map HTTP/1.1" 404 1852
+WARNING 2025-12-27 17:31:53,725 basehttp django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3552
+INFO 2025-12-27 17:37:27,078 basehttp django.server "GET / HTTP/1.1" 200 11551
+INFO 2025-12-27 17:37:38,102 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 17:37:59,094 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=20&price_max=25&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 14006
+INFO 2025-12-27 17:38:09,934 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=10&price_max=25&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 17292
+INFO 2025-12-27 17:38:21,539 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=14&price_max=18&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 12978
+INFO 2025-12-27 17:38:29,407 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=13&price_max=18&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 15100
+INFO 2025-12-27 17:38:46,473 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 17:39:05,224 basehttp django.server "GET /inventory/?name=&quantity_min=100&quantity_max=150&price_min=&price_max=&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 15099
+INFO 2025-12-27 17:39:10,960 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 17:39:18,944 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=false&out_of_stock=false HTTP/1.1" 200 17270
+INFO 2025-12-27 17:39:26,386 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=true&out_of_stock=unknown HTTP/1.1" 200 12956
+INFO 2025-12-27 17:39:32,631 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=false&out_of_stock=unknown HTTP/1.1" 200 17270
+INFO 2025-12-27 17:39:37,986 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 17:39:47,649 basehttp django.server "GET /inventory/?name=Water&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 14001
+INFO 2025-12-27 17:39:53,685 basehttp django.server "GET /inventory/?name=Test&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 15088
+INFO 2025-12-27 17:39:57,994 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 17270
+INFO 2025-12-27 17:40:05,558 basehttp django.server "GET /inventory/?name=Mint&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 12969
+INFO 2025-12-27 17:40:09,197 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=unknown&out_of_stock=unknown HTTP/1.1" 200 17270
+INFO 2025-12-27 17:40:21,226 basehttp django.server "GET /inventory/stock/5/history HTTP/1.1" 200 7263
+INFO 2025-12-27 17:40:24,320 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 17:40:26,959 basehttp django.server "GET /inventory/stock/3/edit HTTP/1.1" 200 4098
+ERROR 2025-12-27 17:40:34,252 views inventory.views Error updating stock: {'last_modification': ['This field cannot be blank.']}
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 46, in post
+    stock.full_clean()  # Run model validation
+    ~~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\base.py", line 1556, in full_clean
+    raise ValidationError(errors)
+django.core.exceptions.ValidationError: {'last_modification': ['This field cannot be blank.']}
+INFO 2025-12-27 17:40:34,367 basehttp django.server "POST /inventory/stock/3/edit HTTP/1.1" 302 0
+INFO 2025-12-27 17:40:34,431 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17523
+INFO 2025-12-27 17:40:38,368 basehttp django.server "GET /inventory/stock/3/edit HTTP/1.1" 200 4098
+ERROR 2025-12-27 17:40:44,397 views inventory.views Error updating stock: {'last_modification': ['This field cannot be blank.']}
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 46, in post
+    stock.full_clean()  # Run model validation
+    ~~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\base.py", line 1556, in full_clean
+    raise ValidationError(errors)
+django.core.exceptions.ValidationError: {'last_modification': ['This field cannot be blank.']}
+INFO 2025-12-27 17:40:44,403 basehttp django.server "POST /inventory/stock/3/edit HTTP/1.1" 302 0
+INFO 2025-12-27 17:40:44,491 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17523
+INFO 2025-12-27 17:40:47,512 basehttp django.server "GET /inventory/stock/3/adjust HTTP/1.1" 200 8602
+ERROR 2025-12-27 17:41:17,102 views inventory.views Error creating stock adjustment: {'last_modification': ['This field cannot be blank.']}
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 250, in post
+    stock.save()
+    ~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\models.py", line 89, in save
+    self.full_clean()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\base.py", line 1556, in full_clean
+    raise ValidationError(errors)
+django.core.exceptions.ValidationError: {'last_modification': ['This field cannot be blank.']}
+INFO 2025-12-27 17:41:17,160 basehttp django.server "POST /inventory/stock/3/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 17:41:17,228 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17524
+INFO 2025-12-27 17:41:22,005 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 7227
+INFO 2025-12-27 17:41:27,492 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17270
+INFO 2025-12-27 17:41:30,612 basehttp django.server "GET /inventory/stock/3/edit HTTP/1.1" 200 4098
+ERROR 2025-12-27 17:41:35,482 views inventory.views Error updating stock: {'last_modification': ['This field cannot be blank.']}
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 46, in post
+    stock.full_clean()  # Run model validation
+    ~~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\base.py", line 1556, in full_clean
+    raise ValidationError(errors)
+django.core.exceptions.ValidationError: {'last_modification': ['This field cannot be blank.']}
+INFO 2025-12-27 17:41:35,488 basehttp django.server "POST /inventory/stock/3/edit HTTP/1.1" 302 0
+INFO 2025-12-27 17:41:35,567 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17523
+INFO 2025-12-27 17:56:50,864 basehttp django.server "GET /inventory/stock/3/adjust HTTP/1.1" 200 8602
+ERROR 2025-12-27 17:57:09,765 views inventory.views Error creating stock adjustment: {'last_modification': ['This field cannot be blank.']}
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 250, in post
+    stock.save()
+    ~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\models.py", line 89, in save
+    self.full_clean()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\db\models\base.py", line 1556, in full_clean
+    raise ValidationError(errors)
+django.core.exceptions.ValidationError: {'last_modification': ['This field cannot be blank.']}
+INFO 2025-12-27 17:57:09,768 basehttp django.server "POST /inventory/stock/3/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 17:57:09,784 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17524
+INFO 2025-12-27 18:15:45,830 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\models.py changed, reloading.
+INFO 2025-12-27 18:15:47,067 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:15:49,547 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 18:15:50,564 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:15:52,173 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 18:15:53,191 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:16:05,974 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\models.py changed, reloading.
+INFO 2025-12-27 18:16:07,643 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:16:17,667 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\models.py changed, reloading.
+INFO 2025-12-27 18:16:18,430 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:16:34,792 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:16:39,191 basehttp django.server "GET /inventory/stock/3/adjust HTTP/1.1" 200 8602
+INFO 2025-12-27 18:16:52,544 views inventory.views Stock Test Item 2 adjusted by admin: 103 -> 100
+INFO 2025-12-27 18:16:52,552 basehttp django.server "POST /inventory/stock/3/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 18:16:52,573 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17077
+INFO 2025-12-27 18:17:02,214 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 8384
+WARNING 2025-12-27 18:17:30,262 basehttp django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3552
+WARNING 2025-12-27 18:17:30,274 basehttp django.server "GET /static/bootstrap/popper.min.js.map HTTP/1.1" 404 1840
+WARNING 2025-12-27 18:17:30,274 basehttp django.server "GET /static/bootstrap/bootstrap.min.js.map HTTP/1.1" 404 1849
+WARNING 2025-12-27 18:17:30,279 basehttp django.server "GET /static/bootstrap/bootstrap.min.css.map HTTP/1.1" 404 1852
+INFO 2025-12-27 18:20:29,750 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 8392
+WARNING 2025-12-27 18:20:29,808 basehttp django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3552
+WARNING 2025-12-27 18:20:29,854 basehttp django.server "GET /static/bootstrap/bootstrap.min.css.map HTTP/1.1" 404 1852
+WARNING 2025-12-27 18:20:29,856 basehttp django.server "GET /static/bootstrap/bootstrap.min.js.map HTTP/1.1" 404 1849
+WARNING 2025-12-27 18:20:29,856 basehttp django.server "GET /static/bootstrap/popper.min.js.map HTTP/1.1" 404 1840
+WARNING 2025-12-27 18:21:07,151 basehttp django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3552
+WARNING 2025-12-27 18:21:07,162 basehttp django.server "GET /static/bootstrap/popper.min.js.map HTTP/1.1" 404 1840
+WARNING 2025-12-27 18:21:07,166 basehttp django.server "GET /static/bootstrap/bootstrap.min.js.map HTTP/1.1" 404 1849
+WARNING 2025-12-27 18:21:07,178 basehttp django.server "GET /static/bootstrap/bootstrap.min.css.map HTTP/1.1" 404 1852
+INFO 2025-12-27 18:27:25,285 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:27:30,947 basehttp django.server "GET /inventory/stock/2/adjust HTTP/1.1" 200 8596
+INFO 2025-12-27 18:28:06,760 views inventory.views Stock Test Item adjusted by admin: 120 -> 125
+INFO 2025-12-27 18:28:06,767 basehttp django.server "POST /inventory/stock/2/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 18:28:06,786 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17077
+INFO 2025-12-27 18:28:11,290 basehttp django.server "GET /inventory/stock/2/history HTTP/1.1" 200 8381
+INFO 2025-12-27 18:28:39,463 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:28:44,114 basehttp django.server "GET /inventory/stock/2/adjust HTTP/1.1" 200 8596
+INFO 2025-12-27 18:29:01,912 views inventory.views Stock Test Item adjusted by admin: 125 -> 120
+INFO 2025-12-27 18:29:01,920 basehttp django.server "POST /inventory/stock/2/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 18:29:01,942 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17077
+INFO 2025-12-27 18:29:07,427 basehttp django.server "GET /inventory/stock/2/history HTTP/1.1" 200 9654
+INFO 2025-12-27 18:36:37,874 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\signals.py changed, reloading.
+INFO 2025-12-27 18:36:39,228 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:36:40,915 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\signals.py changed, reloading.
+INFO 2025-12-27 18:36:42,054 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:36:43,514 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\signals.py changed, reloading.
+INFO 2025-12-27 18:36:44,478 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:36:49,984 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\signals.py changed, reloading.
+INFO 2025-12-27 18:36:50,714 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:37:01,788 basehttp django.server "GET /inventory/stock/2/history HTTP/1.1" 200 9654
+INFO 2025-12-27 18:45:44,570 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:45:55,603 basehttp django.server "GET /inventory/stock/3/adjust HTTP/1.1" 200 8602
+INFO 2025-12-27 18:46:24,472 views inventory.views Stock Test Item 2 adjusted by admin: 100 -> 150
+INFO 2025-12-27 18:46:24,479 basehttp django.server "POST /inventory/stock/3/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 18:46:24,502 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17077
+INFO 2025-12-27 18:46:29,833 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 9654
+INFO 2025-12-27 18:46:50,531 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:46:52,496 basehttp django.server "GET /inventory/stock/2/adjust HTTP/1.1" 200 8596
+INFO 2025-12-27 18:46:54,372 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:46:56,030 basehttp django.server "GET /inventory/stock/2/history HTTP/1.1" 200 9654
+INFO 2025-12-27 18:47:01,569 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:47:10,585 basehttp django.server "GET /inventory/stock/2/adjust HTTP/1.1" 200 8596
+INFO 2025-12-27 18:47:14,565 basehttp django.server "GET /inventory/ HTTP/1.1" 200 16890
+INFO 2025-12-27 18:50:05,553 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\forms.py changed, reloading.
+INFO 2025-12-27 18:50:06,515 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:50:13,072 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 18:50:14,131 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:50:31,962 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 18:50:32,661 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:51:02,514 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 18:51:09,032 basehttp django.server "GET /inventory/stock/3/edit HTTP/1.1" 200 3773
+INFO 2025-12-27 18:51:16,212 views inventory.views Stock details for Test Item 2 updated by admin
+INFO 2025-12-27 18:51:16,220 basehttp django.server "POST /inventory/stock/3/edit HTTP/1.1" 302 0
+INFO 2025-12-27 18:51:16,243 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17511
+INFO 2025-12-27 18:51:21,302 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 9654
+INFO 2025-12-27 18:51:27,968 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 18:52:41,427 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 9654
+INFO 2025-12-27 18:56:50,748 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\models.py changed, reloading.
+INFO 2025-12-27 18:56:51,990 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:56:53,617 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\signals.py changed, reloading.
+INFO 2025-12-27 18:56:54,798 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:57:03,423 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\signals.py changed, reloading.
+INFO 2025-12-27 18:57:04,545 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:57:10,106 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 18:57:11,167 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:58:06,938 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 18:58:07,862 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:58:47,514 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 18:59:20,735 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 11000
+INFO 2025-12-27 18:59:28,106 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 18:59:36,793 basehttp django.server "GET /inventory/stock/5/edit HTTP/1.1" 200 3785
+INFO 2025-12-27 19:00:05,367 views inventory.views Stock details for Smart Bluetooth Speaker updated by admin
+INFO 2025-12-27 19:00:05,375 basehttp django.server "POST /inventory/stock/5/edit HTTP/1.1" 302 0
+INFO 2025-12-27 19:00:05,397 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17511
+INFO 2025-12-27 19:00:08,833 basehttp django.server "GET /inventory/stock/5/history HTTP/1.1" 200 8123
+INFO 2025-12-27 19:00:25,772 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 19:00:30,891 basehttp django.server "GET /inventory/stock/4/edit HTTP/1.1" 200 3774
+INFO 2025-12-27 19:00:39,210 views inventory.views Stock details for Canned Water updated by admin
+INFO 2025-12-27 19:00:39,217 basehttp django.server "POST /inventory/stock/4/edit HTTP/1.1" 302 0
+INFO 2025-12-27 19:00:39,245 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17511
+INFO 2025-12-27 19:00:45,245 basehttp django.server "GET /inventory/stock/4/history HTTP/1.1" 200 8089
+INFO 2025-12-27 19:01:04,471 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 19:02:55,694 basehttp django.server "GET /inventory/stock/4/adjust HTTP/1.1" 200 8605
+INFO 2025-12-27 19:03:12,927 views inventory.views Stock Canned Water adjusted by admin: 180 -> 200
+INFO 2025-12-27 19:03:12,935 basehttp django.server "POST /inventory/stock/4/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 19:03:12,961 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17513
+INFO 2025-12-27 19:03:16,475 basehttp django.server "GET /inventory/stock/4/history HTTP/1.1" 200 10029
+INFO 2025-12-27 19:03:27,377 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 19:03:33,149 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 19:06:07,986 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\homepage\views.py changed, reloading.
+INFO 2025-12-27 19:06:09,076 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:06:32,027 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\homepage\views.py changed, reloading.
+INFO 2025-12-27 19:06:33,039 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:07:46,052 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 19:07:47,144 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:08:27,412 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\views.py changed, reloading.
+INFO 2025-12-27 19:08:28,577 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:08:53,575 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\urls.py changed, reloading.
+INFO 2025-12-27 19:08:54,555 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:08:56,198 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\urls.py changed, reloading.
+INFO 2025-12-27 19:08:57,127 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:09:35,299 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 19:09:36,308 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:09:54,083 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\urls.py changed, reloading.
+INFO 2025-12-27 19:09:54,803 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:11:38,139 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\views.py changed, reloading.
+INFO 2025-12-27 19:11:38,898 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:12:02,899 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:12:34,028 basehttp django.server "GET /transactions/sales/4 HTTP/1.1" 200 11743
+INFO 2025-12-27 19:12:37,098 basehttp django.server "GET /transactions/sales/ HTTP/1.1" 200 9187
+INFO 2025-12-27 19:12:40,849 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:12:48,120 basehttp django.server "GET /?days=7 HTTP/1.1" 200 20847
+INFO 2025-12-27 19:13:01,777 basehttp django.server "GET /?days=90 HTTP/1.1" 200 20851
+ERROR 2025-12-27 19:14:36,722 views inventory.views Error generating stock report: name 'Max' is not defined
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 326, in get
+    max_price=Max('unit_price'),
+              ^^^
+NameError: name 'Max' is not defined. Did you mean: 'max'?
+INFO 2025-12-27 19:14:36,727 basehttp django.server "GET /inventory/report HTTP/1.1" 302 0
+INFO 2025-12-27 19:14:36,773 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17511
+INFO 2025-12-27 19:14:45,321 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:14:50,301 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 19:14:54,242 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:15:00,589 basehttp django.server "GET /transactions/purchases/1 HTTP/1.1" 200 12315
+INFO 2025-12-27 19:15:05,208 basehttp django.server "GET /transactions/purchases/ HTTP/1.1" 200 9883
+INFO 2025-12-27 19:15:07,279 basehttp django.server "GET / HTTP/1.1" 200 20851
+ERROR 2025-12-27 19:27:23,884 views inventory.views Error generating stock report: name 'Max' is not defined
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 326, in get
+    max_price=Max('unit_price'),
+              ^^^
+NameError: name 'Max' is not defined. Did you mean: 'max'?
+INFO 2025-12-27 19:27:23,887 basehttp django.server "GET /inventory/report HTTP/1.1" 302 0
+INFO 2025-12-27 19:27:23,906 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17511
+INFO 2025-12-27 19:46:46,789 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:48:24,635 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 19:48:25,685 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:48:33,265 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 19:48:33,987 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:50:00,621 basehttp django.server "GET / HTTP/1.1" 200 20851
+ERROR 2025-12-27 19:50:04,294 views inventory.views Error generating stock report: Invalid filter: 'mul'
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 392, in get
+    return render(request, self.template_name, context)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 481, in parse
+    raise self.error(token, e)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 479, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 693, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "D:\Unknown\Dimi\dm_ims-main\venv\Lib\site-packages\django\template\base.py", line 603, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'mul'
+INFO 2025-12-27 19:50:04,429 basehttp django.server "GET /inventory/report HTTP/1.1" 302 0
+INFO 2025-12-27 19:50:04,461 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17511
+INFO 2025-12-27 19:50:10,937 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:51:57,733 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:52:05,663 basehttp django.server "GET /inventory/report HTTP/1.1" 200 13103
+INFO 2025-12-27 19:52:54,841 basehttp django.server "GET /inventory/report?days=7 HTTP/1.1" 200 13101
+INFO 2025-12-27 19:52:57,953 basehttp django.server "GET /inventory/report?days=90 HTTP/1.1" 200 13103
+INFO 2025-12-27 19:53:02,894 basehttp django.server "GET / HTTP/1.1" 200 20851
+INFO 2025-12-27 19:55:28,201 basehttp django.server "GET / HTTP/1.1" 200 20899
+INFO 2025-12-27 19:55:36,859 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17326
+INFO 2025-12-27 19:55:44,037 basehttp django.server "GET /inventory/stock/4/history HTTP/1.1" 200 10029
+INFO 2025-12-27 19:57:16,201 basehttp django.server "GET /inventory/stock/4/history HTTP/1.1" 200 10053
+INFO 2025-12-27 19:57:20,147 basehttp django.server "GET /transactions/purchases/ HTTP/1.1" 200 9883
+INFO 2025-12-27 19:57:25,117 basehttp django.server "GET /transactions/purchases/new HTTP/1.1" 200 3567
+INFO 2025-12-27 19:57:29,534 basehttp django.server "POST /transactions/purchases/new HTTP/1.1" 302 0
+INFO 2025-12-27 19:57:29,551 basehttp django.server "GET /transactions/purchases/new/1 HTTP/1.1" 200 10921
+INFO 2025-12-27 19:57:29,698 basehttp django.server "GET /static/js/dialogbox.js HTTP/1.1" 200 1006
+INFO 2025-12-27 19:57:29,703 basehttp django.server "GET /static/js/jquery-3.2.1.slim.min.js HTTP/1.1" 200 69597
+INFO 2025-12-27 19:57:40,202 basehttp django.server "GET /transactions/purchases/ HTTP/1.1" 200 9883
+INFO 2025-12-27 19:57:42,155 basehttp django.server "GET / HTTP/1.1" 200 20899
+INFO 2025-12-27 19:59:17,467 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\views.py changed, reloading.
+INFO 2025-12-27 19:59:18,646 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:59:21,105 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 19:59:22,104 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 19:59:50,058 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\urls.py changed, reloading.
+INFO 2025-12-27 19:59:51,271 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:00:25,242 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 20:00:26,160 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:00:30,673 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\homepage\views.py changed, reloading.
+INFO 2025-12-27 20:00:31,614 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:00:33,012 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\homepage\urls.py changed, reloading.
+INFO 2025-12-27 20:00:33,997 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:00:53,818 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\urls.py changed, reloading.
+INFO 2025-12-27 20:00:54,611 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:01:18,265 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\urls.py changed, reloading.
+INFO 2025-12-27 20:01:19,152 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:01:36,679 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 20:01:37,580 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:01:58,663 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 20:01:59,598 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:02:15,374 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\homepage\views.py changed, reloading.
+INFO 2025-12-27 20:02:16,232 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:03:26,554 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\views.py changed, reloading.
+INFO 2025-12-27 20:03:27,301 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:03:30,274 basehttp django.server "GET / HTTP/1.1" 200 20899
+INFO 2025-12-27 20:03:35,336 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17414
+INFO 2025-12-27 20:05:47,622 basehttp django.server "GET /inventory/ HTTP/1.1" 200 17438
+INFO 2025-12-27 20:05:52,705 basehttp django.server "GET /inventory/import HTTP/1.1" 200 9067
+INFO 2025-12-27 20:07:26,912 views inventory.views Stock export: 4 items exported by admin
+INFO 2025-12-27 20:07:26,912 basehttp django.server "GET /inventory/export HTTP/1.1" 200 257
+ERROR 2025-12-27 20:25:24,785 views inventory.views Error importing stock row 2: name 'timezone' is not defined
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 422, in post
+    'last_modification': timezone.now().strftime('%Y-%m-%d %H:%M:%S')
+                         ^^^^^^^^
+NameError: name 'timezone' is not defined
+ERROR 2025-12-27 20:25:24,792 views inventory.views Error importing stock row 3: name 'timezone' is not defined
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 422, in post
+    'last_modification': timezone.now().strftime('%Y-%m-%d %H:%M:%S')
+                         ^^^^^^^^
+NameError: name 'timezone' is not defined
+ERROR 2025-12-27 20:25:24,794 views inventory.views Error importing stock row 4: name 'timezone' is not defined
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 422, in post
+    'last_modification': timezone.now().strftime('%Y-%m-%d %H:%M:%S')
+                         ^^^^^^^^
+NameError: name 'timezone' is not defined
+ERROR 2025-12-27 20:25:24,796 views inventory.views Error importing stock row 5: name 'timezone' is not defined
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 422, in post
+    'last_modification': timezone.now().strftime('%Y-%m-%d %H:%M:%S')
+                         ^^^^^^^^
+NameError: name 'timezone' is not defined
+ERROR 2025-12-27 20:25:24,798 views inventory.views Error importing stock row 6: name 'timezone' is not defined
+Traceback (most recent call last):
+  File "D:\Unknown\Dimi\dm_ims-main\inventory\views.py", line 422, in post
+    'last_modification': timezone.now().strftime('%Y-%m-%d %H:%M:%S')
+                         ^^^^^^^^
+NameError: name 'timezone' is not defined
+INFO 2025-12-27 20:25:24,806 basehttp django.server "POST /inventory/import HTTP/1.1" 200 10271
+INFO 2025-12-27 20:28:02,817 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 20:28:04,433 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:28:19,828 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 20:28:20,932 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 20:28:57,651 basehttp django.server "GET /inventory/import HTTP/1.1" 200 9433
+INFO 2025-12-27 20:29:06,504 basehttp django.server "GET /inventory/import HTTP/1.1" 200 9433
+INFO 2025-12-27 20:29:14,390 basehttp django.server "POST /inventory/import HTTP/1.1" 200 10570
+INFO 2025-12-27 20:31:22,903 basehttp django.server "GET /inventory/ HTTP/1.1" 200 18543
+INFO 2025-12-27 20:31:29,549 basehttp django.server "GET /inventory/stock/6/history HTTP/1.1" 200 8088
+INFO 2025-12-27 20:31:38,430 basehttp django.server "GET /inventory/ HTTP/1.1" 200 18543
+INFO 2025-12-27 20:31:43,952 basehttp django.server "GET /inventory/import HTTP/1.1" 200 9433
+INFO 2025-12-27 20:31:51,970 basehttp django.server "GET /inventory/ HTTP/1.1" 200 18543
+INFO 2025-12-27 20:34:28,447 basehttp django.server "GET /inventory/ HTTP/1.1" 200 18543
+INFO 2025-12-27 20:34:30,968 basehttp django.server "GET /inventory/import HTTP/1.1" 200 10772
+INFO 2025-12-27 20:41:56,016 basehttp django.server "GET /inventory/import HTTP/1.1" 200 10267
+INFO 2025-12-27 22:06:53,753 basehttp django.server "GET / HTTP/1.1" 200 20944
+INFO 2025-12-27 22:07:47,664 basehttp django.server "GET /inventory/ HTTP/1.1" 200 18543
+INFO 2025-12-27 22:09:36,551 basehttp django.server "GET /inventory/import HTTP/1.1" 200 10267
+INFO 2025-12-27 22:09:50,005 basehttp django.server "POST /inventory/import HTTP/1.1" 200 10921
+INFO 2025-12-27 22:09:55,553 basehttp django.server "GET / HTTP/1.1" 200 20964
+INFO 2025-12-27 22:09:58,021 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19647
+INFO 2025-12-27 22:18:25,408 basehttp django.server "GET /inventory/stock/7/adjust HTTP/1.1" 200 8649
+INFO 2025-12-27 22:18:51,720 views inventory.views Stock Test Item 4 adjusted by admin: 100 -> 9
+INFO 2025-12-27 22:18:51,732 basehttp django.server "POST /inventory/stock/7/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 22:18:51,773 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19881
+INFO 2025-12-27 22:18:59,997 basehttp django.server "GET /inventory/?name=&quantity_min=&quantity_max=&price_min=&price_max=&low_stock=true&out_of_stock=unknown HTTP/1.1" 200 14160
+INFO 2025-12-27 22:19:43,119 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19696
+INFO 2025-12-27 22:19:49,439 basehttp django.server "GET / HTTP/1.1" 200 21842
+INFO 2025-12-27 22:20:23,315 basehttp django.server "GET /inventory/?low_stock=true HTTP/1.1" 200 14160
+INFO 2025-12-27 22:20:29,914 basehttp django.server "GET / HTTP/1.1" 200 21842
+INFO 2025-12-27 22:20:34,133 basehttp django.server "GET /inventory/?low_stock=true HTTP/1.1" 200 14160
+INFO 2025-12-27 22:20:36,715 basehttp django.server "GET / HTTP/1.1" 200 21842
+INFO 2025-12-27 22:22:09,564 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\homepage\views.py changed, reloading.
+INFO 2025-12-27 22:22:11,527 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 22:22:21,926 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\homepage\views.py changed, reloading.
+INFO 2025-12-27 22:22:23,148 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 22:23:02,067 basehttp django.server "GET / HTTP/1.1" 200 22128
+INFO 2025-12-27 22:23:25,666 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19696
+INFO 2025-12-27 22:23:34,328 basehttp django.server "GET /inventory/stock/6/adjust HTTP/1.1" 200 8650
+INFO 2025-12-27 22:23:59,089 views inventory.views Stock Test Item 3 adjusted by admin: 522 -> 0
+INFO 2025-12-27 22:23:59,102 basehttp django.server "POST /inventory/stock/6/adjust HTTP/1.1" 302 0
+INFO 2025-12-27 22:23:59,143 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19930
+INFO 2025-12-27 22:24:03,673 basehttp django.server "GET / HTTP/1.1" 200 23219
+INFO 2025-12-27 22:24:08,499 basehttp django.server "GET /inventory/?out_of_stock=true HTTP/1.1" 200 14161
+INFO 2025-12-27 22:24:16,315 basehttp django.server "GET / HTTP/1.1" 200 23219
+INFO 2025-12-27 22:27:48,386 basehttp django.server "GET /transactions/sales/new HTTP/1.1" 200 15648
+INFO 2025-12-27 22:29:39,912 views transactions.views Sale bill 5 created by admin
+INFO 2025-12-27 22:29:39,927 basehttp django.server "POST /transactions/sales/new HTTP/1.1" 302 0
+INFO 2025-12-27 22:29:39,996 basehttp django.server "GET /transactions/sales/5 HTTP/1.1" 200 11920
+INFO 2025-12-27 22:29:57,470 basehttp django.server "GET / HTTP/1.1" 200 24072
+INFO 2025-12-27 22:34:30,633 basehttp django.server "GET /transactions/sales/new HTTP/1.1" 200 15648
+INFO 2025-12-27 22:36:22,619 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\forms.py changed, reloading.
+INFO 2025-12-27 22:36:24,551 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 22:36:29,438 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\views.py changed, reloading.
+INFO 2025-12-27 22:36:31,040 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 22:36:51,806 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\inventory\views.py changed, reloading.
+INFO 2025-12-27 22:36:53,307 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 22:37:27,524 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\forms.py changed, reloading.
+INFO 2025-12-27 22:37:28,837 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 22:37:44,199 autoreload django.utils.autoreload D:\Unknown\Dimi\dm_ims-main\transactions\forms.py changed, reloading.
+INFO 2025-12-27 22:37:45,944 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2025-12-27 22:37:47,534 basehttp django.server "GET /transactions/sales/new HTTP/1.1" 200 14898
+INFO 2025-12-27 22:38:39,966 views transactions.views Sale bill 6 created by admin
+INFO 2025-12-27 22:38:39,977 basehttp django.server "POST /transactions/sales/new HTTP/1.1" 302 0
+INFO 2025-12-27 22:38:40,016 basehttp django.server "GET /transactions/sales/6 HTTP/1.1" 200 11895
+INFO 2025-12-27 22:38:53,442 basehttp django.server "GET / HTTP/1.1" 200 24358
+INFO 2025-12-27 22:39:10,986 basehttp django.server "GET /transactions/sales/ HTTP/1.1" 200 10501
+INFO 2025-12-27 22:39:19,820 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19745
+INFO 2025-12-27 22:39:23,809 basehttp django.server "GET /inventory/stock/3/history HTTP/1.1" 200 13911
+INFO 2025-12-27 22:39:40,823 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19745
+INFO 2025-12-27 22:39:44,440 basehttp django.server "GET /inventory/stock/4/history HTTP/1.1" 200 12940
+INFO 2025-12-27 22:42:02,276 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4565
+INFO 2025-12-27 22:45:14,358 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4732
+INFO 2025-12-27 22:46:20,762 basehttp django.server "GET / HTTP/1.1" 200 24358
+INFO 2025-12-27 22:46:23,565 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7084
+INFO 2025-12-27 22:46:28,546 basehttp django.server "GET /transactions/suppliers/1/edit HTTP/1.1" 200 4837
+INFO 2025-12-27 22:48:03,346 basehttp django.server "POST /transactions/suppliers/1/edit HTTP/1.1" 302 0
+INFO 2025-12-27 22:48:03,435 basehttp django.server "GET /transactions/suppliers HTTP/1.1" 301 0
+INFO 2025-12-27 22:48:03,483 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7271
+INFO 2025-12-27 22:48:13,993 basehttp django.server "GET /transactions/suppliers/new HTTP/1.1" 200 4732
+INFO 2025-12-27 22:50:29,262 basehttp django.server "POST /transactions/suppliers/new HTTP/1.1" 302 0
+INFO 2025-12-27 22:50:29,317 basehttp django.server "GET /transactions/suppliers HTTP/1.1" 301 0
+INFO 2025-12-27 22:50:29,362 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7958
+INFO 2025-12-27 22:52:45,319 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7809
+INFO 2025-12-27 22:53:29,647 basehttp django.server "GET /transactions/suppliers/Test%20Supplier HTTP/1.1" 200 7236
+INFO 2025-12-27 22:53:40,676 basehttp django.server "GET /transactions/suppliers/2/edit HTTP/1.1" 200 4878
+INFO 2025-12-27 22:53:43,297 basehttp django.server "GET /transactions/suppliers/ HTTP/1.1" 200 7809
+INFO 2025-12-27 22:53:46,170 basehttp django.server "GET /transactions/suppliers/Banderos%20Ltd HTTP/1.1" 200 9420
+INFO 2025-12-27 22:55:25,772 basehttp django.server "GET / HTTP/1.1" 200 24358
+INFO 2026-01-04 19:21:14,962 autoreload django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-04 19:21:31,646 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19745
+INFO 2026-01-04 19:21:47,051 basehttp django.server "GET / HTTP/1.1" 200 24356
+INFO 2026-01-04 19:22:12,040 basehttp django.server "GET / HTTP/1.1" 302 0
+INFO 2026-01-04 19:22:12,132 basehttp django.server "GET /login/ HTTP/1.1" 200 2468
+INFO 2026-01-04 19:22:12,377 basehttp django.server "GET /static/bootstrap/bootstrap.min.css HTTP/1.1" 200 159515
+INFO 2026-01-04 19:22:12,398 basehttp django.server "GET /static/css/main.css HTTP/1.1" 200 8150
+INFO 2026-01-04 19:22:12,403 basehttp django.server "GET /static/css/sidebar.css HTTP/1.1" 200 2018
+INFO 2026-01-04 19:22:12,408 basehttp django.server "GET /static/bootstrap/jquery-3.3.1.slim.min.js HTTP/1.1" 200 69917
+INFO 2026-01-04 19:22:12,408 basehttp django.server "GET /static/bootstrap/popper.min.js HTTP/1.1" 200 21004
+INFO 2026-01-04 19:22:12,410 basehttp django.server "GET /static/bootstrap/bootstrap.min.js HTTP/1.1" 200 58072
+INFO 2026-01-04 19:22:12,481 basehttp django.server "GET /favicon.ico HTTP/1.1" 302 0
+INFO 2026-01-04 19:22:12,503 basehttp django.server "GET /login/ HTTP/1.1" 200 2468
+INFO 2026-01-04 19:22:19,148 basehttp django.server "POST /login/ HTTP/1.1" 200 2657
+INFO 2026-01-04 19:22:19,216 basehttp django.server "GET /favicon.ico HTTP/1.1" 302 0
+INFO 2026-01-04 19:22:19,227 basehttp django.server "GET /login/ HTTP/1.1" 200 2468
+INFO 2026-01-04 19:22:51,559 basehttp django.server "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-04 19:22:51,630 basehttp django.server "GET / HTTP/1.1" 200 24356
+INFO 2026-01-04 19:22:51,666 basehttp django.server "GET /static/css/dialogbox.css HTTP/1.1" 200 763
+INFO 2026-01-04 19:22:51,670 basehttp django.server "GET /static/js/Chart.min.js HTTP/1.1" 200 172812
+WARNING 2026-01-04 19:23:05,188 basehttp django.server "GET /favicon.ico HTTP/1.1" 404 3630
+INFO 2026-01-04 19:23:18,852 basehttp django.server "GET /inventory/ HTTP/1.1" 200 19745
+INFO 2026-01-04 19:23:28,178 views inventory.views Stock export: 6 items exported by admin
+INFO 2026-01-04 19:23:28,179 basehttp django.server "GET /inventory/export HTTP/1.1" 200 352
